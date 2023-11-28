@@ -10,7 +10,7 @@ function tsp_ls(matrix) {
     }
 
     //run the function repeatedly
-    //I'm not sure yet when to stop it, so I just run it a constant amount of times
+    //Stop it after a linear amount of times
     for (let j = 0; j < len * 50; j++) {
         //generate random i and k
         let i = Math.floor(Math.random() * (len - 1));
