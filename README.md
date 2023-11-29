@@ -51,3 +51,12 @@ Test your new function; I've provided some basic testing code in `code.test.js`.
 What is the worst-case asymptotic time complexity of your implementation? What
 is the worst-case asymptotic memory complexity? Add your answer, including your
 reasoning, to this markdown file.
+
+## Answer
+
+At the very beginning of my algorithm, it has a while loop that generates random numbers until the numbers fit the correct format.  In the worst possible case, this could choose the wrong random numbers forever and have an infinite time complexity.
+
+As for the memory complexity, the algorithm first creates the array "route", which has $n$ items.  It also creates "newRoute" arrays, one at a time, that also have $n$ items.  The rest of the variables store a constant amount of memory.  Together, this simplifies the a memory complexity of $\Theta(n)$.
+
+
+
