@@ -1,30 +1,28 @@
 function tsp_ls(matrix) {
-    //generate a random starting route
     let len = matrix.length;
-    route = [];
-    while (route.length < len) {
-        let num = Math.floor(Math.random() * len);
-        if (!route.includes(num)) {
-            route.push(num);
-        }
-    }
 
-    //run the function repeatedly
-    //Stop it after a linear amount of times
-    for (let j = 0; j < len * 50; j++) {
-        //generate random i and k
-        let i = Math.floor(Math.random() * (len - 1));
-        let k = Math.floor(Math.random() * (len - 1 - i)) + i + 1;
+    //Generate a starting route
+    route = Array.from(Array(len).keys())
 
-        let newRoute = twoOptSwap(route, i, k);
-        if (dist(newRoute) < dist(route)) {
-            route = newRoute;
+    //Run the function repeatedly, going through variables systematically
+    //Inspired by https://en.wikipedia.org/wiki/2-opt
+    var improved = true;
+    while (improved) {
+        improved = false;
+        for (let i = 0; i < len - 1; i++) {
+            for (let k = i + 1; k < len; k++) {
+                let newRoute = twoOptSwap(route, i, k);
+                if (dist(newRoute) < dist(route)) {
+                    route = newRoute;
+                    improved = true;
+                }
+            }
         }
     }
     return dist(route);
     
 
-    //function to reverse cities i to k
+    //Function to reverse cities i to k
     function twoOptSwap(route, i, k) {
         let swap = route.slice(i, k + 1);
         swap.reverse();
@@ -32,7 +30,7 @@ function tsp_ls(matrix) {
     }
 
 
-    //get the total distance of a route
+    //Get the total distance of a route
     function dist(route) {
         let d = 0;
         for (let i = 0; i < route.length - 1; i++) {
@@ -41,3 +39,11 @@ function tsp_ls(matrix) {
         return d;
     }
 }
+
+
+dm = [[0,3,4,2,7],
+      [3,0,4,6,3],
+      [4,4,0,5,8],
+      [2,6,5,0,6],
+      [7,3,8,6,0]];
+tsp_ls(dm);
