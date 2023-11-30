@@ -1,8 +1,13 @@
 function tsp_ls(matrix) {
     let len = matrix.length;
 
-    //Generate a starting route
+    //Generate a random starting route
+    //Uses Durstenfeld's shuffle algorithm: https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle#The_modern_algorithm
     route = Array.from(Array(len).keys())
+    for (let i = route.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [route[i], route[j]] = [route[j], route[i]];
+    }
 
     //Run the function repeatedly, going through variables systematically
     //Inspired by https://en.wikipedia.org/wiki/2-opt
