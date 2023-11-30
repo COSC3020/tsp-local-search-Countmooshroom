@@ -54,9 +54,9 @@ reasoning, to this markdown file.
 
 ## Answer
 
-At the very beginning of my algorithm, it has a while loop that generates random numbers until the numbers fit the correct format.  In the worst possible case, this could choose the wrong random numbers forever and have an infinite time complexity.
+At the very beginning of my algorithm, it creates a route array of length $n$, which takes $n$ time.  Then, it runs a while loop that keeps running as long as the inner loops make improvemnt.  Between the two inner for loops, it runs for i = each value in the array and k = each value in the array greater than i.  This takes $n * \frac{n}{2}$ time.  In the worst case, it would make one improvement every time so that it goes through every permutation of the list and keeps the while loop going.  There can be $n!$ total permutations, so the total time complexity is $n + \frac{n^2}{2} * n!$, or $\Theta(n^2n!)$.
 
-As for the memory complexity, the algorithm first creates the array "route", which has $n$ items.  It also creates "newRoute" arrays, one at a time, that also have $n$ items.  The rest of the variables store a constant amount of memory.  Together, this simplifies the a memory complexity of $\Theta(n)$.
+As for the memory complexity, the algorithm first creates the array "route", which has $n$ items.  It also creates "newRoute" arrays, one at a time, that also have $n$ items.  The rest of the variables store a constant amount of memory.  Together, this simplifies to a memory complexity of $\Theta(n)$.
 
 
 
